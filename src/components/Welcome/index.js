@@ -4,27 +4,28 @@ import './index.css'
 import {Component} from 'react'
 
 class Welcome extends Component {
-  state = {isSubscribe: true}
+  state = {isSubscribe: false}
 
   subscribeBtn = () => {
     this.setState(prevState => ({isSubscribe: !prevState.isSubscribe}))
   }
 
-  changeBtn = () => {
+  getChangeBtn = () => {
     const {isSubscribe} = this.state
-    return isSubscribe? "Subscribed": "Subscribe"
-    }
+
+    return isSubscribe ? 'Subscribed' : 'Subscribe'
   }
 
   render() {
-      const changeBtn = this.changeBtn()
+    const changeBtn = this.getChangeBtn()
+
     return (
       <div className="bg-container">
         <h1 className="main-heading">Welcome</h1>
         <p className="paragraph">Thank you! Happy Learning</p>
         <button type="button" className="btn" onClick={this.subscribeBtn}>
-        {this.changeBtn}
-      </button>
+          {changeBtn}
+        </button>
       </div>
     )
   }
